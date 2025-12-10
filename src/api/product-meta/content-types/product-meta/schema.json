@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_metas",
+  "info": {
+    "singularName": "product-meta",
+    "pluralName": "product-metas",
+    "displayName": "product_meta"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "meta_keywords": {
+      "type": "string"
+    },
+    "seo_slug": {
+      "type": "string"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "product_metas"
+    }
+  }
+}

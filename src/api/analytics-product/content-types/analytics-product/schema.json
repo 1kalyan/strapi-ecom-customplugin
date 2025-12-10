@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "analytics_products",
+  "info": {
+    "singularName": "analytics-product",
+    "pluralName": "analytics-products",
+    "displayName": "analytics_product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "views": {
+      "type": "integer"
+    },
+    "purchases": {
+      "type": "integer"
+    },
+    "wishlist_adds": {
+      "type": "integer"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    }
+  }
+}

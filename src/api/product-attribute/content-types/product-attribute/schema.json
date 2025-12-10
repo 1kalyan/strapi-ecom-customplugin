@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_attributes",
+  "info": {
+    "singularName": "product-attribute",
+    "pluralName": "product-attributes",
+    "displayName": "product_attribute"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "attribute_name": {
+      "type": "string"
+    },
+    "attribute_value": {
+      "type": "string"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "product_attributes"
+    }
+  }
+}
