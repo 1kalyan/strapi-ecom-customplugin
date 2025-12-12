@@ -107,6 +107,9 @@
       "relation": "manyToMany",
       "target": "api::review.review",
       "inversedBy": "users_permissions_users"
+    },
+    "avatar": {
+      "type": "string"
     }
   }
 }

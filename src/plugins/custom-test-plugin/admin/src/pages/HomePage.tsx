@@ -41,22 +41,24 @@ const HomePage = () => {
 
   const submit = async () => {
     if (!schema) return;
-
+    console.log({ schema })
     await post('/custom-test-plugin/register', {
       schema,
       data: formData,
     });
+    console.log('Form submitted', formData);
   };
 
   useEffect(() => {
     async function fetchSchema() {
       const { data } = await get('/custom-test-plugin/schema');
       setSchema(data);
+
     }
 
     fetchSchema();
   }, [get]);
-
+  console.log({ schema })
   if (!schema) {
     return <Main padding={4}>Loading…</Main>;
   }
