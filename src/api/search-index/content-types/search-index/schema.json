@@ -7,7 +7,7 @@
     "displayName": "search_index"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
