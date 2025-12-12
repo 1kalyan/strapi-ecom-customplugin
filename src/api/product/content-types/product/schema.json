@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "minLength": 4,
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "slug": {
+      "type": "string"
+    },
+    "stock": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "product_attributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-attribute.product-attribute",
+      "mappedBy": "product"
+    },
+    "product_metas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-meta.product-meta",
+      "mappedBy": "product"
+    },
+    "wishlist_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wishlist-item.wishlist-item",
+      "mappedBy": "product"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "product"
+    },
+    "product_images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-image.product-image",
+      "mappedBy": "product"
+    },
+    "search_indices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::search-index.search-index",
+      "mappedBy": "product"
+    },
+    "cart_item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart-item.cart-item",
+      "mappedBy": "product"
+    }
+  }
+}

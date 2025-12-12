@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wishlists",
+  "info": {
+    "singularName": "wishlist",
+    "pluralName": "wishlists",
+    "displayName": "wishlist"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    },
+    "wishlist_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wishlist-item.wishlist-item",
+      "mappedBy": "wishlist"
+    }
+  }
+}

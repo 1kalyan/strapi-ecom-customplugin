@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "analytics_users",
+  "info": {
+    "singularName": "analytics-user",
+    "pluralName": "analytics-users",
+    "displayName": "analytics_user"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "analytics_users"
+    },
+    "order_count": {
+      "type": "integer"
+    },
+    "total_spent": {
+      "type": "decimal"
+    },
+    "last_order_date": {
+      "type": "datetime",
+      "required": false
+    }
+  }
+}
