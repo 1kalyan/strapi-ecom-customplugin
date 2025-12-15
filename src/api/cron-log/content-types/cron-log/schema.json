@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cron_logs",
+  "info": {
+    "singularName": "cron-log",
+    "pluralName": "cron-logs",
+    "displayName": "cron-log"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "message": {
+      "type": "string"
+    },
+    "value": {
+      "type": "integer"
+    }
+  }
+}
