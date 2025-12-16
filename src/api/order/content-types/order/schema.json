@@ -52,6 +52,11 @@
       "relation": "manyToOne",
       "target": "api::discount.discount",
       "inversedBy": "orders"
+    },
+    "idempotencyKey": {
+      "type": "uid",
+      "targetField": "idempotencyKey",
+      "unique": true
     }
   }
 }

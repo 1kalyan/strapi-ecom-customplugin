@@ -12,5 +12,9 @@ export default factories.createCoreRouter("api::order.order", {
       policies: ["api::order.is-owner"],
     },
     // create route can be open, ownership handled in controller
+    create: {
+      policies: [],
+      middlewares: ["global::idempotency"],
+    },
   },
 });

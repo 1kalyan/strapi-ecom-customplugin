@@ -1,5 +1,5 @@
 export default {
-  "*/10 * * * *": async ({ strapi }) => {
+  "*/59 * * * *": async ({ strapi }) => {
     try {
       const value = Math.floor(Math.random() * 1000);
 
