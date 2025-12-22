@@ -14,7 +14,7 @@
 // };
 
 // export { HomePage };
-import { useFetchClient } from '@strapi/admin/strapi-admin';
+import { useFetchClient, useNotification } from '@strapi/admin/strapi-admin';
 import { Box, Button, Main } from '@strapi/design-system';
 import { useEffect, useState } from 'react';
 import DynamicField from '../components/DynamicField';
@@ -32,6 +32,7 @@ interface Schema {
 
 const HomePage = () => {
   const { get, post } = useFetchClient();
+  const { toggleNotification } = useNotification();
   const [schema, setSchema] = useState<Schema | null>(null);
   const [formData, setFormData] = useState<Record<string, any>>({});
 
@@ -41,13 +42,38 @@ const HomePage = () => {
 
   const submit = async () => {
     if (!schema) return;
-    console.log({ schema })
-    await post('/custom-test-plugin/register', {
-      schema,
-      data: formData,
-    });
-    console.log('Form submitted', formData);
+
+    try {
+      await post('/custom-test-plugin/register', {
+        schema,
+        data: formData,
+      });
+
+      toggleNotification({
+        type: 'success',
+        title: 'Success',
+        message: 'Form submitted successfully',
+      });
+    } catch (error: any) {
+      const payload = error?.response?.data ?? error?.data;
+      const apiError = payload?.error;
+      const details = apiError?.details;
+
+      toggleNotification({
+        type: 'danger',
+        title: details?.field
+          ? `Invalid ${details.field}`
+          : 'Error',
+        message: details?.reason
+          ? `${apiError.message}: ${details.reason}`
+          : apiError?.message || 'Something went wrong',
+      });
+
+      console.error(error);
+    }
+
   };
+
 
   useEffect(() => {
     async function fetchSchema() {
